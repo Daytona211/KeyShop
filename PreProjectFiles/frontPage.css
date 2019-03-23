@@ -1,0 +1,45 @@
+.carousel {
+    height: 300px;
+    margin-bottom: 60px;
+    width: 500px;
+    align-content: center;
+}
+.carousel .item {
+    width: 500px;
+    height: 282px;
+    background-color: #777;
+}
+
+img{
+   object-fit: fill;
+   width: 500px;
+   height: 500px;
+}
+
+#wholeCarousel{
+    left: 240px;
+    align-content: center;
+    display:inline-block;
+    position: relative;
+}
+
+#signInBtn{
+    left: 440px;
+    bottom: 50px;
+    position: relative;
+}
+
+
+#navTitle{
+    position: relative;
+    bottom:10px;
+    padding-right: 10px;
+}
+
+.jumbotron{
+    background:#cacaca; 
+}
+
+body{
+    background:#888787;
+}
