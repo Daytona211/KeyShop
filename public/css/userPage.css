@@ -1,0 +1,25 @@
+#ordersTable{
+    width: 50%;
+}
+
+#newOrder{
+    display: none;
+}
+
+/* #lockChangeForm{
+    display: none;
+}
+
+#keyRequestForm{
+    display: none;
+} */
+
+#centerContent{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+  /* #keyRequestForm{
+  display: none;
+} */

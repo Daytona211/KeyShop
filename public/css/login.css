@@ -1,0 +1,43 @@
+#form {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 700px;
+    height: 400px;
+    background-color: rgb(157, 137, 177);
+    border-radius: 3px;
+}
+
+
+#email{
+    position: relative;
+    padding-top: 100px;
+    padding-left: 10%;
+    width: 500px;
+}
+
+#password{
+    position: relative;
+    padding-left: 10%;
+    width: 500px;
+}
+
+#submit{
+    position: relative;
+    left: 35%;
+}
+
+#signinlbl{
+    position: relative;
+    top: 15%;
+    left: 5%;
+    color: #e6e600;
+}
+
+body{
+    background-image: url(./download.jpg);
+    object-fit: cover;
+}

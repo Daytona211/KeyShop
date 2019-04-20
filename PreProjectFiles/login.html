@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="login.css" />
 </head>
 
-<form id="form">
-    <div id="input">
-        <input id="aa">
+<form id = "form">
+        <h1 id="signinlbl"> Sign in! </h1> 
+    <div class="form-group" id="email">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
-</form>
+    <div class="form-group" id = "password">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+  </form>

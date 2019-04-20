@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/userPage.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+    <link rel="stylesheet" href="/css/userPage.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>USER PAGE</h2>
+
+    <button id="orderBtn" type="button" class="btn btn-primary">Set new order</button>
+    <button id="lookupBtn" type="button" class="btn btn-primary">Lookup Order</button>
+    <br><br>
+
+
+    <div id="newOrder">
+        <h1> NEW ORDER </h1>
+        <div id="centerContent">
+            <div id="lockChangeForm">
+                <h1> LOCK CHANGE </h1>
+                <form method="POST" action="/users/newOrder">
+                    <label><input id="lockChangeRadioBtn" type="radio" name="lockChange" checked>Lock Change</label>
+                    <label><input id="keyRequestRadioBtn" type="radio" name="keyRequest">Key Request</label>
+                    <br>
+                    <input name="firstName" placeholder="Student's First Name" />
+                    <input name="lastName" placeholder="Student's Last Name" />
+                    <input name="contactNumber" placeholder="Student's Cellphone #" />
+                    <br>
+                    <input name="quad" placeholder="Student's Quad" />
+                    <input name="building" placeholder="Student's Building" />
+                    <input name="roomNum" placeholder="Student's Room #" /> <br>
+                    <label><input id="toBillRadioBtn" type="radio" name="toBill" checked>To Bill:</label>
+                    <label><input id="notBillRadioBtn" type="radio" name="notBill">Do not Bill:</label>
+                    <textarea class="form-control" rows="1" cols="3" id="reason"
+                        placeholder="Reason being billed / not being billed" name="reason"></textarea>
+                    <hr>
+                    <label>SUITE KEY</label><input id="lcSuitekey" type="text" name="suiteKey"> <br>
+                    <label>BEDROOM KEY</label><input id="lcBedroomKey" type="text" name="bedroomKey"> <br>
+                    <label>MAILBOX KEY</label><input id="lcMailboxKey" type="text" name="mailboxKey">
+                    <label>MAILBOX #</label><input id="lcMailboxNumber" type="text" name="mailboxNumber"> <br>
+                    <button type="submit" class="btn btn-primary" id="lcSubmit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="orderLookup">
+        <form method="POST" action="/admin/lookup">
+            <p>Lookup student</p>
+            <input name="firstName" placeholder="Students first name" />
+            <input name="lastName" placeholder="Students last name" />
+            <input name="orderNumber" placeholder="Order #" />
+            <button type="submit" class="btn btn-secondary">Search</button>
+        </form>
+
+        <div id="orders">
+            <p>Orders</p>
+            <div id="ordersTable">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order #</th>
+                            <th scope="col">Student's Lastname</th>
+                            <th scope="col">Quad</th>
+                            <th scope="col">Building</th>
+                            <th scope="col">Room</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Norcross</td>
+                            <td>State</td>
+                            <td>Eastman Tower</td>
+                            <td>312-1</td>
+                            <td>Waiting</td>
+                            <td>$90</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

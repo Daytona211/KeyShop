@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+</head>
+
+<form id="form" method="POST" action="/users/logUserIn">
+    <h1 id="signinlbl"> Log in! </h1>
+    <div class="form-group" id="email">
+        <label for="exampleInputEmail1">Username</label>
+        <input class="form-control" id="SUNYID" placeholder="SUNY ID" name="id">
+    </div>
+    <div class="form-group" id="password">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+</form>
