@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql");
 const app = express();
 const path = require("path");
+const session = require("express-session");
 
 // = to app.js
 // Express body parser
@@ -24,6 +25,19 @@ db.connect(() => {
     console.log("Connected to DB");
 });
 
+//SESSIONS SETUP
+app.use(session({
+  secret: '410 Is A Class IaM In',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { 
+    secure: false,
+    maxAge: (1000 * 60 * 60), // 1 hr
+    sameSite: true,
+   }
+}));
+module.exports.session = session;
+
 const PORT = ('port', process.env.PORT || 3000);
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
@@ -33,4 +47,3 @@ app.listen(PORT, () => {
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 app.use("/admin", require("./routes/admin"));
-

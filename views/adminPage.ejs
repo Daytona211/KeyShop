@@ -2,36 +2,124 @@
 <html lang="en">
 
 <head>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="/js/adminPage.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+  <link rel="stylesheet" href="/css/adminPage.css" />
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">SUNY Albany Keyshop</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/users/login">login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
-  </nav>
+  <h2>ADMIN PAGE</h2>
 
-  <h1> ADMIN PAGE </h1>
-  <div class="container">
-    <br>
+  <button id="orderBtn" type="button" class="btn btn-primary">Set new order</button>
+  <button id="lookupBtn" type="button" class="btn btn-primary">Lookup Order</button>
+  <br><br>
 
+
+  <div id="newOrder">
+        <h1> NEW ORDER </h1>
+        <div id="centerContent">
+            <div id="lockChangeForm">
+                <h1> LOCK CHANGE </h1>
+                <form method="POST" action="/admin/newOrder">
+                    <label><input id="lockChangeRadioBtn" type="radio" name="lockChange" checked>Lock Change</label>
+                    <label><input id="keyRequestRadioBtn" type="radio" name="keyRequest">Key Request</label>
+                    <br>
+                    <input name="firstName" placeholder="Student's First Name" required />
+                    <input name="lastName" placeholder="Student's Last Name" required />
+                    <input name="SUNY_ID" placeholder="SUNY ID (00 number)" required />
+                    <br>
+                    <input name="quad" placeholder="Student's Quad" required />
+                    <input name="building" placeholder="Student's Building" required />
+                    <input name="roomNum" placeholder="Student's Room #" required /> <br>
+                    <label><input id="toBillRadioBtn" type="radio" name="toBill" checked>To Bill:</label>
+                    <label><input id="notBillRadioBtn" type="radio" name="notBill">Do not Bill:</label>
+                    <textarea class="form-control" rows="1" cols="3" id="reason"
+                        placeholder="Reason being billed / not being billed" name="reason"></textarea>
+                    <hr>
+                    <p class="h3">Key Info</p>
+                    <input id="lcSuitekey" type="text" name="suiteKey" placeholder="Number of Suite Keys">
+                    <input id="lcBedroomKey" type="text" name="bedroomKey" placeholder="Number of Bedroom Keys">  <br>
+                    <input id="lcMailboxKey" type="text" name="mailboxKey" placeholder="Number of Mailbox Keys">
+                    <input id="lcMailboxNumber" type="text" name="mailboxNumber" placeholder="Mailbox #">  <br>
+                    <button type="submit" class="btn btn-primary" id="lcSubmit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  <div id="orderLookup">
+    <form method="POST" action="/admin/lookup">
+      <p>Lookup student</p>
+      <input name="firstName" placeholder="Students first name" />
+      <input name="lastName" placeholder="Students last name" />
+      <input name="orderNumber" placeholder="Order #" />
+      <button type="submit" class="btn btn-secondary">Search</button>
+    </form>
+
+    <div id="orders">
+      <p>Orders</p>
+      <div id="ordersTable">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Order #</th>
+              <th scope="col">Student's First name</th>
+              <th scope="col">Student's Last name</th>
+              <th scope="col">Quad</th>
+              <th scope="col">Building</th>
+              <th scope="col">Room</th>
+              <th scope="col">Status</th>
+              <th scope="col">Price</th>
+              <th scope="col">Reason</th>                            
+              <th scope="col"># of suite keys</th>
+              <th scope="col"># of bedroom keys</th>
+              <th scope="col"># of mailbox keys</th>  
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i = 0; i < orders.length; i++){ %>
+            <tr>
+              <th scope="row"> <%= orders[i].id %></th>
+              <td> <%= users[i].firstName %></td>
+              <td> <%= users[i].lastName %></td>
+              <td> <%= users[i].quad %></td>
+              <td> <%= users[i].building %></td>
+              <td> <%= users[i].room %></td>
+              <td> <%= orders[i].status %> </td>
+              <td> <%= orders[i].price %></td>
+              <td> <%= orders[i].reason %></td>
+              <td> <%= orders[i].suiteKeyNum %></td>
+              <td> <%= orders[i].roomKeyNum %></td>
+              <td> <%= orders[i].mailKeyNum %></td>
+              <td> <button class="editBtn" id="editBtn">Edit</button></td>
+              <td id="saveBtnDiv"> <button class="saveBtn" id="saveBtn">Save</button> </td>
+              <td> <button class="deleteBtn" id="deleteBtn">Delete</button></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+
+  <% if(typeof error != 'undefined'){  %>
+  <div id="errorAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>
+      <p><%= error %></p>
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+        aria-hidden="true">&times;</span></button>
+  </div>
+  <% } %>
 </body>
 
 </html>

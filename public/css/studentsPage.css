@@ -1,9 +1,15 @@
 #ordersTable{
     width: 50%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 #newOrder{
     display: none;
+}
+
+.extendedTD{
+    width: 400px;
 }
 
 /* #lockChangeForm{

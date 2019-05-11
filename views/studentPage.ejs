@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/userPage.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+    <link rel="stylesheet" href="/css/studentsPage.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">SUNY Albany Keyshop</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/login">login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/logout">logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h2>STUDENT PAGE</h2>
+
+    <br><br>
+    <div id="centerContent">
+        <div id="orders">
+            <p>Orders</p>
+            <div id="ordersTable">
+                <table id="ordersTable" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order #</th>
+                            <th scope="col">Student's Firstname</th>
+                            <th scope="col">Student's Lastname</th>
+                            <th scope="col">Quad</th>
+                            <th scope="col">Building</th>
+                            <th scope="col">Room</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < orders.length; i++){ %>
+                        <tr>
+                            <th scope="row"><%= orders[i].id %></th>
+                            <td> <%= user.firstName %> </td>
+                            <td><%= user.lastName %></td>
+                            <td> <%= user.quad %></td>
+                            <td> <%= user.building %></td>
+                            <td class="extendedTD" colspan="0"> <%= user.room %></td>
+                            <td> <%= orders[i].status %></td>
+                            <td> <%= orders[i].price  %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p>If your keys are complete stop by your quad information center to pick them up.</p>
+        <br>
+        <p>If you want to order new keys stop by your quad information center</p>
+    </div>
+</body>
+
+</html>
